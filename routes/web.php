@@ -4,13 +4,21 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('welcome');
+    return Inertia::render('mithusanth');
 })->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
+});
+
+
+
+Route::get('/', fn () => Inertia::render('mithusanth'));
+
+Route::get('/projects/{id}', function ($id) {
+    return Inertia::render('ProjectShow', ['projectId' => $id]);
 });
 
 require __DIR__.'/settings.php';
