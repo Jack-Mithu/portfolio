@@ -11,8 +11,8 @@ const ME = {
     role: 'Full-Stack Developer',
     bio: 'Building scalable web & mobile applications with Laravel, React, and React Native. I care about clean architecture, fast UIs, and products that actually solve problems.',
     email: 'mithusanth@gmail.com',
-    github: 'https://github.com/',
-    linkedin: 'https://linkedin.com/',
+    github: 'https://github.com/Jack-Mithu',
+    linkedin: 'https://linkedin.com/in/sukumar-mithushanth',
     image: '/images/profile.jpg',
 };
 
