@@ -9,11 +9,11 @@ Route::get('/', function () {
 })->name('home');
 
 
-
-
-
-
-Route::get('/projectshow/{id}', fn($id) => inertia('ProjectShow', ['projectId' => $id]));
+Route::get('/projectshow/{id}', function ($id) {
+    return Inertia::render('ProjectShow', [
+        'projectId' => (int) $id,
+    ]);
+});
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
