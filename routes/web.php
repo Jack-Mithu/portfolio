@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+
 Route::get('/', function () {
     return Inertia::render('mithusanth');
 })->name('home');
@@ -10,7 +11,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/', fn () => Inertia::render('mithusanth'));
+
 
 Route::get('/projectshow/{id}', fn($id) => inertia('ProjectShow', ['projectId' => $id]));
 
