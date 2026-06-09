@@ -12,7 +12,7 @@ const ME = {
     bio: 'Building scalable web & mobile applications with Laravel, React, and React Native. I care about clean architecture, fast UIs, and products that actually solve problems.',
     email: 'mithusanthjack@gmail.com',
     github: 'https://github.com/Jack-Mithu',
-    linkedin: 'https://linkedin.com/in/sukumar-mithushanth',
+    linkedin: 'www.linkedin.com/in/sukumar-mithushanth-235380250',
     image: '/images/profile.jpg',
 };
 
