@@ -1,6 +1,9 @@
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 
+interface Props {
+    projectId: number | string;
+}
 // ----- Types -----
 type ProjectDetail = {
     overview: string;
@@ -166,6 +169,9 @@ function StatusBadge({ status, color }: { status: string; color: string }) {
  *              Falls back to static data for development.
  *   projectId — alternatively pass just the ID and we look it up locally.
  */
+export default function ProjectShow({ projectId }: Props) {
+    // ...
+
 export default function ProjectShow({ project, projectId }: { project?: Project; projectId?: string | number }) {
     // Use passed project OR look up from static data by ID
     const data = project ?? ALL_PROJECTS.find((p) => p.id === Number(projectId)) ?? ALL_PROJECTS[0];
