@@ -1,9 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 
-interface Props {
-    projectId: number | string;
-}
 // ----- Types -----
 type ProjectDetail = {
     overview: string;
@@ -26,16 +23,12 @@ type Project = {
     detail: ProjectDetail;
 };
 
-/* ============================================================
-   PROJECT DETAIL PAGE
-   Route: /projects/{id}
-   Laravel: Route::get('/projects/{id}', fn($id) => inertia('ProjectShow', ['projectId' => $id]));
-   
-   Pass the `project` prop from your controller, or use the
-   static data below while you wire up the backend.
-============================================================ */
+interface Props {
+    project?: Project;
+    projectId?: string | number;
+}
 
-/* ── Static data (remove once you have a real backend) ── */
+/* ── Static data ── */
 const ALL_PROJECTS: Project[] = [
     {
         id: 1,
@@ -46,8 +39,8 @@ const ALL_PROJECTS: Project[] = [
         year: '2024',
         status: 'Live',
         color: '#16a34a',
-        github: 'https://github.com/',
-        live: 'https://shelfsmart.example.com',
+        github: 'https://github.com/Jack-Mithu',
+        live: null,
         detail: {
             overview:
                 'ShelfSmart helps retail shop owners track their inventory in real time, flag near-expiry products, and reduce wastage through automated alerts and smart reorder suggestions.',
@@ -74,7 +67,7 @@ const ALL_PROJECTS: Project[] = [
         year: '2024',
         status: 'In Progress',
         color: '#ea580c',
-        github: 'https://github.com/',
+        github: 'https://github.com/Jack-Mithu',
         live: null,
         detail: {
             overview:
@@ -102,8 +95,8 @@ const ALL_PROJECTS: Project[] = [
         year: '2023',
         status: 'Live',
         color: '#7c3aed',
-        github: 'https://github.com/',
-        live: 'https://condo.example.com',
+        github: 'https://github.com/Jack-Mithu',
+        live: null,
         detail: {
             overview:
                 'A full-featured condominium management platform covering resident registration, facility booking, maintenance requests, billing, and announcements — all in one place.',
@@ -123,9 +116,7 @@ const ALL_PROJECTS: Project[] = [
     },
 ];
 
-/* ============================================================
-   SUB-COMPONENTS
-============================================================ */
+/* ── Sub-components ── */
 
 function BackButton() {
     return (
@@ -159,22 +150,13 @@ function StatusBadge({ status, color }: { status: string; color: string }) {
     );
 }
 
-/* ============================================================
-   MAIN PAGE
-============================================================ */
+/* ── Main Page ── */
 
-/**
- * Props:
- *   project  — pass the full project object from your Laravel controller.
- *              Falls back to static data for development.
- *   projectId — alternatively pass just the ID and we look it up locally.
- */
-export default function ProjectShow({ projectId }: Props) {
-    // ...
-
-export default function ProjectShow({ project, projectId }: { project?: Project; projectId?: string | number }) {
-    // Use passed project OR look up from static data by ID
-    const data = project ?? ALL_PROJECTS.find((p) => p.id === Number(projectId)) ?? ALL_PROJECTS[0];
+export default function ProjectShow({ project, projectId }: Props) {
+    const data =
+        project ??
+        ALL_PROJECTS.find((p) => p.id === Number(projectId)) ??
+        ALL_PROJECTS[0];
 
     const fadeUp = {
         initial: { opacity: 0, y: 24 },
@@ -200,10 +182,13 @@ export default function ProjectShow({ project, projectId }: { project?: Project;
 
             <div className="bg-[#080808] text-white min-h-screen" style={{ fontFamily: "'Sora', sans-serif" }}>
 
-                {/* ── Thin top accent line ── */}
-                <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${data.color}, transparent)` }} />
+                {/* Top accent line */}
+                <div
+                    className="h-px w-full"
+                    style={{ background: `linear-gradient(90deg, transparent, ${data.color}, transparent)` }}
+                />
 
-                {/* ── Nav bar ── */}
+                {/* Sticky nav */}
                 <div className="border-b border-white/6 bg-[#080808]/90 backdrop-blur sticky top-0 z-50">
                     <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
                         <BackButton />
@@ -213,22 +198,15 @@ export default function ProjectShow({ project, projectId }: { project?: Project;
 
                 <div className="max-w-4xl mx-auto px-6 py-16">
 
-                    {/* ── Hero block ── */}
+                    {/* Hero block */}
                     <motion.div {...fadeUp} className="mb-20">
-                        <div className="flex items-start justify-between gap-8 mb-6">
-                            <div>
-                                <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/25 mb-3">
-                                    {data.year} · Case Study
-                                </p>
-                                <h1
-                                    className="text-[clamp(2.5rem,6vw,4rem)] font-bold leading-[1.06] tracking-tight"
-                                    style={{ color: '#fff' }}
-                                >
-                                    {data.title}
-                                </h1>
-                                <p className="text-lg text-white/40 mt-3 font-medium">{data.tagline}</p>
-                            </div>
-                        </div>
+                        <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/25 mb-3">
+                            {data.year} · Case Study
+                        </p>
+                        <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-bold leading-[1.06] tracking-tight text-white">
+                            {data.title}
+                        </h1>
+                        <p className="text-lg text-white/40 mt-3 font-medium">{data.tagline}</p>
 
                         {/* Tech stack */}
                         <div className="flex flex-wrap gap-2 mt-8">
@@ -278,13 +256,11 @@ export default function ProjectShow({ project, projectId }: { project?: Project;
                         )}
                     </motion.div>
 
-                    {/* ── Divider ── */}
                     <div className="h-px bg-white/6 mb-20" />
 
-                    {/* ── Content sections ── */}
+                    {/* Content sections */}
                     <div className="flex flex-col gap-20">
 
-                        {/* Overview */}
                         <motion.div {...stagger(0)}>
                             <h2 className="text-xs font-medium uppercase tracking-[0.15em] text-white/25 mb-5">
                                 Overview
@@ -294,19 +270,14 @@ export default function ProjectShow({ project, projectId }: { project?: Project;
                             </p>
                         </motion.div>
 
-                        {/* Challenge + Solution side by side */}
                         <div className="grid grid-cols-2 gap-10">
                             <motion.div {...stagger(1)}>
-                                <div
-                                    className="w-8 h-1 rounded-full mb-5"
-                                    style={{ background: data.color }}
-                                />
+                                <div className="w-8 h-1 rounded-full mb-5" style={{ background: data.color }} />
                                 <h2 className="text-sm font-semibold text-white mb-4">The Challenge</h2>
                                 <p className="text-[15px] leading-[1.8] text-white/45">
                                     {data.detail.challenge}
                                 </p>
                             </motion.div>
-
                             <motion.div {...stagger(2)}>
                                 <div className="w-8 h-1 rounded-full mb-5 bg-white/20" />
                                 <h2 className="text-sm font-semibold text-white mb-4">The Solution</h2>
@@ -316,7 +287,6 @@ export default function ProjectShow({ project, projectId }: { project?: Project;
                             </motion.div>
                         </div>
 
-                        {/* Features */}
                         <motion.div {...stagger(3)}>
                             <h2 className="text-xs font-medium uppercase tracking-[0.15em] text-white/25 mb-8">
                                 Key Features
@@ -340,18 +310,12 @@ export default function ProjectShow({ project, projectId }: { project?: Project;
                                 ))}
                             </ul>
                         </motion.div>
-
                     </div>
 
-                    {/* ── Divider ── */}
                     <div className="h-px bg-white/6 mt-20 mb-16" />
 
-                    {/* ── Other projects ── */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                    >
+                    {/* Other projects — uses /projectshow/ to match your Laravel route */}
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
                         <h2 className="text-xs font-medium uppercase tracking-[0.15em] text-white/25 mb-8">
                             Other Projects
                         </h2>
@@ -359,7 +323,7 @@ export default function ProjectShow({ project, projectId }: { project?: Project;
                             {ALL_PROJECTS.filter((p) => p.id !== data.id).map((p) => (
                                 <Link
                                     key={p.id}
-                                    href={`/projects/${p.id}`}
+                                    href={`/projectshow/${p.id}`}
                                     className="group flex items-center justify-between p-5 rounded-xl border border-white/6 bg-white/2 hover:bg-white/5 hover:border-white/12 transition-all"
                                 >
                                     <div className="flex items-center gap-4">
@@ -377,7 +341,7 @@ export default function ProjectShow({ project, projectId }: { project?: Project;
                         </div>
                     </motion.div>
 
-                    {/* ── Footer CTA ── */}
+                    {/* Footer CTA */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -386,7 +350,7 @@ export default function ProjectShow({ project, projectId }: { project?: Project;
                     >
                         <p className="text-white/30 text-sm mb-4">Interested in working together?</p>
                         <a
-                            href="mailto:mithusanth@gmail.com"
+                            href="mailto:mithusanthjack@gmail.com"
                             className="inline-flex items-center gap-2 px-8 py-3 text-black text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
                             style={{ background: data.color }}
                         >
