@@ -169,30 +169,33 @@ function Nav({ showAvatar }: { showAvatar: boolean }) {
 
 function Hero({ imageRef }: { imageRef: React.RefObject<HTMLDivElement> }) {
     return (
-        <section className="min-h-screen flex items-center max-w-6xl mx-auto px-4 sm:px-6 pt-14 sm:pt-16">
-            {/*
-                Mobile:  single column, image on top, text below
-                Desktop: two columns, text left, image right
-            */}
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center py-12 md:py-0">
+        /* overflow-hidden stops decorative rings from creating horizontal scroll */
+        <section className="overflow-hidden w-full pt-20 sm:pt-24 md:min-h-screen md:flex md:items-center">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
+                {/*
+                    Mobile:  flex column — image top, text bottom
+                    Desktop: two columns side by side
+                */}
+                <div className="flex flex-col md:grid md:grid-cols-2 md:gap-16 md:items-center py-10 md:py-0 gap-10">
 
-                {/* Image — shows first on mobile, second on desktop */}
+                {/* Image — top on mobile, right on desktop */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.92 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="flex justify-center order-first md:order-last"
                 >
-                    <div className="relative" ref={imageRef}>
-                        {/* Decorative rings — smaller on mobile */}
-                        <div className="absolute -inset-3 sm:-inset-4 rounded-full border border-white/6" />
-                        <div className="absolute -inset-6 sm:-inset-8 rounded-full border border-white/3" />
+                    {/* padding instead of negative inset so rings don't overflow */}
+                    <div className="relative p-8 sm:p-10" ref={imageRef}>
+                        {/* Decorative rings */}
+                        <div className="absolute inset-4 sm:inset-5 rounded-full border border-white/6" />
+                        <div className="absolute inset-0 rounded-full border border-white/3" />
 
                         {/* Accent dot */}
-                        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#a3e635] z-10 shadow-[0_0_12px_#a3e63580]" />
+                        <div className="absolute top-6 right-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#a3e635] z-10 shadow-[0_0_12px_#a3e63580]" />
 
-                        {/* Profile image — responsive size */}
-                        <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-[300px] md:h-[300px] rounded-full overflow-hidden border border-white/12 shadow-[0_0_60px_rgba(163,230,53,0.08)]">
+                        {/* Profile image */}
+                        <div className="w-44 h-44 sm:w-56 sm:h-56 md:w-[260px] md:h-[260px] rounded-full overflow-hidden border border-white/12 shadow-[0_0_60px_rgba(163,230,53,0.08)]">
                             <img
                                 src={ME.image}
                                 alt={ME.name}
@@ -201,14 +204,14 @@ function Hero({ imageRef }: { imageRef: React.RefObject<HTMLDivElement> }) {
                         </div>
 
                         {/* Status badge */}
-                        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-[#111] border border-white/10 rounded-full px-3 py-1.5 whitespace-nowrap">
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-[#111] border border-white/10 rounded-full px-3 py-1.5 whitespace-nowrap z-10">
                             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#a3e635] shadow-[0_0_6px_#a3e635]" />
                             <span className="text-[10px] sm:text-xs text-white/60 font-medium">Open to work</span>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* Text */}
+                {/* Text — bottom on mobile, left on desktop */}
                 <div className="order-last md:order-first text-center md:text-left">
                     <motion.p
                         initial={{ opacity: 0, y: 16 }}
@@ -278,7 +281,8 @@ function Hero({ imageRef }: { imageRef: React.RefObject<HTMLDivElement> }) {
                     </motion.div>
                 </div>
 
-            </div>
+                </div>{/* end flex col / grid */}
+            </div>{/* end max-w container */}
         </section>
     );
 }
