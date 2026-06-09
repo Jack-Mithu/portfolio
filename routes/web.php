@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 Route::get('/', fn () => Inertia::render('mithusanth'));
 
-Route::get('/projects/{id}', function ($id) {
+Route::get('/projectshow/{id}', function ($id) {
     return Inertia::render('ProjectShow', ['projectId' => $id]);
 });
 
