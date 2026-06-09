@@ -280,7 +280,7 @@ function Projects() {
                         transition={{ delay: i * 0.1, duration: 0.5 }}
                     >
                         <Link
-                            href={`/projects/${p.id}`}
+                           href={`/projectshow/${p.id}`}
                             className="group flex items-center justify-between gap-8 p-6 rounded-xl border border-white/8 bg-white/3 hover:bg-white/6 hover:border-white/15 transition-all duration-300 block"
                         >
                             <div className="flex items-center gap-6 flex-1 min-w-0">
