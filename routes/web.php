@@ -12,9 +12,7 @@ Route::get('/', function () {
 
 Route::get('/', fn () => Inertia::render('mithusanth'));
 
-Route::get('/projects/{id}', function ($id) {
-    return Inertia::render('ProjectShow', ['projectId' => $id]);
-});
+Route::get('/projects/{id}', fn($id) => inertia('ProjectShow', ['projectId' => $id]));
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
