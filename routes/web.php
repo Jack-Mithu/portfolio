@@ -9,7 +9,7 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('/projectshow/{id}', function ($id) {
+Route::get('pages/projectshow/{id}', function ($id) {
     return Inertia::render('ProjectShow', [
         'projectId' => (int) $id,
     ]);
