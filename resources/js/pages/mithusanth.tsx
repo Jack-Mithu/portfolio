@@ -548,7 +548,7 @@ function Projects({ onOpen }: { onOpen: (p: Project) => void }) {
         <section id="projects" className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 md:py-28">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="mb-10 sm:mb-14">
                 <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/30 mb-3">Portfolio</p>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Selected Projects</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">My Projects</h2>
             </motion.div>
 
             <div className="flex flex-col gap-3 sm:gap-4">
