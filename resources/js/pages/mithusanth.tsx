@@ -53,7 +53,7 @@ const projects: Project[] = [
         live: null,
         // Replace with your real screenshot paths
         images: [
-            '/images/shelfsmart-1.jpg',
+            '/images/homepage.jpeg',
             '/images/shelfsmart-2.jpg',
             '/images/shelfsmart-3.jpg',
         ],
