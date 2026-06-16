@@ -54,8 +54,13 @@ const projects: Project[] = [
         // Replace with your real screenshot paths
         images: [
             '/images/homepage.png',
-            '/images/shelfsmart-2.jpg',
-            '/images/shelfsmart-3.jpg',
+            '/images/Home.jpeg',
+            '/images/AddProduct.jpeg',
+            '/images/barcodeScan.jpeg',
+            '/images/Product.jpeg',
+            '/images/ProductDetails.jpeg',
+            '/images/Alerts.jpeg',
+            '/images/profile.jpeg',
         ],
         purpose: 'Help small retail shops eliminate inventory waste and expired stock loss through smart tracking.',
         overview: 'ShelfSmart helps retail shop owners track their inventory in real time, flag near-expiry products, and reduce wastage through automated alerts and smart reorder suggestions.',
