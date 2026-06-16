@@ -114,6 +114,8 @@ const projects: Project[] = [
             '/images/welcomPageOfMultiHub.png',
             '/images/SchoolDashBoardOfMulti.png',
             '/images/StudentDashboardOfMultiHub.png',
+            '/images/StudentDashboardOfMultiHub.png',
+            '/images/TeacherportalMultihub.png',
         ],
         purpose: 'To streamline school administration and improve communication between teachers, students, and parents.',
         overview: 'A full-featured school management platform covering student records, course management, assignment tracking, and communication — all in one place.',
