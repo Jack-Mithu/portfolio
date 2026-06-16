@@ -111,9 +111,9 @@ const projects: Project[] = [
         github: 'https://github.com/Jack-Mithu',
         live: 'https://multi-schoolhub.laravel.cloud/',
         images: [
-            '/images/condo-1.jpg',
-            '/images/condo-2.jpg',
-            '/images/condo-3.jpg',
+            '/images/welcomPageOfMultiHub.png',
+            '/images/SchoolDashBoardOfMulti.png',
+            '/images/StudentDashboardOfMultiHub.png',
         ],
         purpose: 'To streamline school administration and improve communication between teachers, students, and parents.',
         overview: 'A full-featured school management platform covering student records, course management, assignment tracking, and communication — all in one place.',
