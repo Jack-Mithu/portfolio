@@ -48,7 +48,7 @@ const projects: Project[] = [
         tech: ['Laravel', 'React', 'MySQL', 'Tailwind CSS'],
         year: '2024',
         status: 'Live',
-        color: '#16a34a',
+        color: '#fbff00',
         github: 'https://github.com/Jack-Mithu',
         live: null,
         // Replace with your real screenshot paths
