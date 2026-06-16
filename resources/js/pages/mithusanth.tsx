@@ -154,7 +154,10 @@ function ImageSlider({ images, color }: { images: string[]; color: string }) {
     const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
 
     return (
-        <div className="relative w-full rounded-xl overflow-hidden bg-white/4 border border-white/8" style={{ aspectRatio: '16/9' }}>
+        <div
+            className="relative w-full rounded-xl overflow-hidden bg-white/4 border border-white/8 flex items-center justify-center"
+            style={{ maxHeight: '60vh' }}
+        >
             <AnimatePresence mode="wait">
                 <motion.img
                     key={current}
@@ -164,7 +167,7 @@ function ImageSlider({ images, color }: { images: string[]; color: string }) {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -30 }}
                     transition={{ duration: 0.3 }}
-                    className="w-full h-full object-cover"
+                    className="max-w-full max-h-[60vh] object-contain"
                     onError={(e) => {
                         // fallback placeholder when image not found
                         (e.target as HTMLImageElement).style.display = 'none';
