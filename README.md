@@ -2,6 +2,8 @@
 
 My personal developer portfolio: an animated single-page site showcasing my projects, with a detail page for each one covering the purpose, challenge, solution and key features.
 
+### 🌐 [View it live → portfolio-mithusanth-sukumar.laravel.cloud](https://portfolio-mithusanth-sukumar.laravel.cloud/)
+
 ![Laravel](https://img.shields.io/badge/Laravel_12-FF2D20?style=flat-square&logo=laravel&logoColor=white)
 ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![Inertia](https://img.shields.io/badge/Inertia.js-9553E9?style=flat-square&logo=inertia&logoColor=white)
@@ -48,4 +50,4 @@ Open **http://localhost:8000**.
 ---
 
 ## 📫 Contact
-[GitHub](https://github.com/Jack-Mithu) · [LinkedIn](https://linkedin.com/in/sukumar-mithushanth)
+[Portfolio](https://portfolio-mithusanth-sukumar.laravel.cloud/) · [GitHub](https://github.com/Jack-Mithu) · [LinkedIn](https://linkedin.com/in/sukumar-mithushanth)
